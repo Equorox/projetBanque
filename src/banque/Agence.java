@@ -29,6 +29,7 @@ public class Agence {
 		Agence.listeCodes.add(codeAgence);
 		this.nomAgence = nomAgence;
 		this.adresseAgence = adresseAgence;
+		Agence.listeAgences.add(this);
 	}
 
 	public int getCodeAgence() {

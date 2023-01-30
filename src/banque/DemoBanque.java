@@ -14,8 +14,12 @@ public class DemoBanque {
 		Client cd1 = new Client("Soprano", "Tony", bdate, "loveUgina@gmail.com");
 		Client c2 = new Client("Kill", "Bill", bdate, "kill@gmail.com");
 		Client c3 = new Client("Neutron", "Jimmy", bdate, "godar@gmail.com");
+		Compte com1 = new Compte(a1.getCodeAgence(), c1, 150, false);
 		
-		Menu.processMenu();
+		Agence.afficherAgences();
+		Compte.afficherIdComptes();
+		
+//		Menu.processMenu();
 		
 		
 		

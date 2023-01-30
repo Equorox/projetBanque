@@ -33,6 +33,8 @@ public class Compte {
 		this.client = client;
 		this.solde = solde;
 		this.decouvertAutorise = decouvertAutorise;
+		Compte.listeIdComptes.add(idCompte);
+		Compte.listeCompte.add(this);
 	}
 	
 	public long getIdCompte() {
@@ -66,7 +68,9 @@ public class Compte {
 		int agence = sc.nextInt();
 		System.out.printf("%nEntrez l'id du client concerné : ");
 		Client client = Client.getClientFromId(sc.nextInt());
-		
+		if (client == null) {
+			return;
+		}
 		if (client.getListeCompte().size()>3) {
 			System.out.println("Ce client a déjà 3 comptes");
 			return;
