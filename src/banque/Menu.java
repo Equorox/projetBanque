@@ -37,13 +37,35 @@ public class Menu {
 				Client.instanceClient();
 				break;
 			case 3:
-
+				Compte.instanceCompte();
 				break;
 			case 4:
-
+				System.out.printf("%nEntrez l'id du compte : ");
+				int id = sc.nextInt();
+				System.out.println(Compte.getCompteFromId(id).toString());
 				break;
 			case 5:
+				System.out.printf("%nComment voulez vous rechercher le client ? %n1. Nom du client%n2. Numéro du compte %n3. Id du client");
+				int choix5 =choix();
+				switch (choix5) {
+				case 1:
+					System.out.printf("%nEntrez le nom du client : ");
+					String nom = sc.next();
+					Client.getClientFromName(nom);
+					break;
+				case 2:
+					System.out.printf("%nEntrez le numéro du compte :");
+					int idCompte = sc.nextInt();
+					Client.getClientFromCompte(null);
+					break;
+				case 3:
+					System.out.printf("%nEntrez l'id du client : ");
+					
+					break;
 
+				default:
+					break;
+				}
 				break;
 			case 6:
 

@@ -55,5 +55,15 @@ public class Agence {
 		Agence agence = new Agence(nomAgence, adresseAgence);
 		listeAgences.add(agence);
 	}
+	
+	public static Agence getAgenceFromId(int id) {
+		for (Agence agence : listeAgences) {
+			if (id == agence.getCodeAgence()) {
+				return agence;
+			}
+		}
+		System.out.println("Cette agence n'existe pas");
+		return null;
+	}
 
 }

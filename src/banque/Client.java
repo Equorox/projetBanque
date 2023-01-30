@@ -14,6 +14,7 @@ public class Client {
 	private String email;
 	private static ArrayList<Integer> listeIdClients = new ArrayList<>();
 	private static ArrayList<Client> listeClients = new ArrayList<>();
+	private ArrayList<Compte> listeComptes = new ArrayList<>();
 	
 	public Client(String nom, String prenom, LocalDate dateNaissance, String email) {
 		//TODO changer la génération pour prendre en compte les règles métier
@@ -57,12 +58,16 @@ public class Client {
 		return this.email;
 	}
 	
-	public ArrayList<Integer> getListeId(){
+	public static ArrayList<Integer> getListeId(){
 		return Client.listeIdClients;
 	}
 	
-	public ArrayList<Client> getListeClients(){
+	public static ArrayList<Client> getListeClients(){
 		return Client.listeClients;
+	}
+	
+	public ArrayList<Compte> getListeCompte(){
+		return this.listeComptes;
 	}
 	
 	public static void instanceClient() {
@@ -78,4 +83,33 @@ public class Client {
 		Client.listeClients.add(client);
 	}
 	
+	public static Client getClientFromId(int id) {
+		for (Client client : listeClients) {
+			if (id == client.getIdClient()) {
+				return client;
+			}
+		}
+		System.out.println("Ce client n'existe pas");
+		return null;
+	}
+	
+	public static Client getClientFromName(String nom) {
+		for (Client client : listeClients) {
+			if(nom == client.getNom()) {
+				return client;
+			}
+		}
+		System.out.println("Ce client n'existe pas");
+		return null;
+	}
+	
+	public static Client getClientFromCompte(Compte compte) {
+		for (Client client : listeClients) {
+				if (client == compte.getClient()) {
+					return client;
+			}
+		}
+		System.out.println("Ce client n'existe pas");
+		return null;
+	}
 }
