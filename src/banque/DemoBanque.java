@@ -1,5 +1,9 @@
 package banque;
 
+import java.time.LocalDate;
+
+import javax.xml.crypto.Data;
+
 public class DemoBanque {
 	
 	public static void main (String[] args) {
@@ -10,9 +14,13 @@ public class DemoBanque {
 //			System.out.println(agence.getAdresseAgence());
 //		}
 		
-//		Menu.processMenu();
+		LocalDate bdate = LocalDate.of(2020, 1, 8);
+		Client c1 = new Client("Soprano", "Tony", bdate, "loveUgina@gmail.com");
+		Client c2 = new Client("Kill", "Bill", bdate, "kill@gmail.com");
+		Client c3 = new Client("Neutron", "Jimmy", bdate, "godar@gmail.com");
 		
-		System.out.println(Compte.generateID());
+		
+		Menu.processMenu();
 		
 	}
 	

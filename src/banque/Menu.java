@@ -49,7 +49,7 @@ public class Menu {
 
 				break;
 			case 7:
-
+				Client.printClient();
 				break;
 			case 8:
 				System.out.println("A bientôt !");
