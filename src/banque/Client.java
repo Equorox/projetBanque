@@ -36,6 +36,7 @@ public class Client {
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
 		this.email = email;
+		Client.listeClients.add(this);
 	}
 	
 	public int getIdClient() {
@@ -112,4 +113,59 @@ public class Client {
 		System.out.println("Ce client n'existe pas");
 		return null;
 	}
+
+	public static void printClient() {
+		int user = 0;
+		int loop = 0;
+		
+		while (loop == 0) {
+			System.out.printf("\nListe des clients : \n");
+			for (Client uno : listeClients) {
+				System.out.printf("id : %d\n", uno.getIdClient());
+			}
+			System.out.printf("Quel client souahitez vous consulter ?\n\n");
+			user = sc.nextInt();
+			sc.nextLine();
+			if (listeIdClients.contains(user)) {
+				loop++;
+			}
+		}
+		for(Client uno : listeClients) {
+			if (uno.getIdClient() == user) {
+				Client tmp = uno;
+				System.out.printf("Nom : %s, Prenom : %s, Email : %s\n\n", tmp.getNom(), tmp.getPrenom(), tmp.getEmail());
+				break;
+			}
+		}
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
