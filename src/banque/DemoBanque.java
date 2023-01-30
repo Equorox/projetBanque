@@ -16,10 +16,17 @@ public class DemoBanque {
 		Client c3 = new Client("Neutron", "Jimmy", bdate, "godar@gmail.com");
 		Compte com1 = new Compte(a1.getCodeAgence(), c1, 150, false);
 		
-		Agence.afficherAgences();
-		Compte.afficherIdComptes();
+//		Agence.afficherAgences();
+//		Compte.afficherIdComptes();
+//		Agence.instanceAgence();
+//		Agence.afficherAgences();
 		
-//		Menu.processMenu();
+//		Client.afficherClients();
+//		System.out.println(Client.getClientFromName("Soprano"));
+//		Compte.afficherIdComptes();
+		Menu.processMenu();
+		
+		
 		
 		
 		

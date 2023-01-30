@@ -42,24 +42,31 @@ public class Menu {
 			case 4:
 				Compte.afficherIdComptes();
 				System.out.printf("%nEntrez l'id du compte : ");
-				int id = sc.nextInt();
+				long id = sc.nextLong();
+				sc.nextLine();
 				System.out.println(Compte.getCompteFromId(id).toString());
 				break;
 			case 5:
-				System.out.printf("%nComment voulez vous rechercher le client ? %n1. Nom du client%n2. Numéro du compte %n3. Id du client");
+				System.out.printf("%nComment voulez vous rechercher le client ? %n1. Nom du client%n2. Numéro du compte %n3. Id du client%n");
 				int choix5 =choix();
 				switch (choix5) {
 				case 1:
 					System.out.printf("%nEntrez le nom du client : ");
 					String nom = sc.next();
+					Client client = Client.getClientFromName(nom);
+					if (client == null) {
+						break;
+					}
 					System.out.println(Client.getClientFromName(nom).toString());
 					break;
 				case 2:
+					Compte.afficherIdComptes();
 					System.out.printf("%nEntrez le numéro du compte :");
-					int idCompte = sc.nextInt();
+					long idCompte = sc.nextLong();
 					System.out.println(Client.getClientFromCompte(Compte.getCompteFromId(idCompte)));
 					break;
 				case 3:
+					Client.afficherIds();
 					System.out.printf("%nEntrez l'id du client : ");
 					String idClient = sc.next();
 					System.out.println(Client.getClientFromId(idClient));
@@ -69,8 +76,13 @@ public class Menu {
 				}
 				break;
 			case 6:
+				Client.afficherIds();
 				System.out.printf("%nEntrez l'id du client : ");
 				String idClient = sc.next();
+				Client client = Client.getClientFromId(idClient);
+				if (client == null) {
+					break;
+				}
 				Client.getClientFromId(idClient).afficheListeComptes();
 				break;
 			case 7:
@@ -85,5 +97,4 @@ public class Menu {
 			}
 		}
 	}
-
 }

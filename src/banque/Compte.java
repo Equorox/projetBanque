@@ -58,7 +58,7 @@ public class Compte {
 	}
 	
 	public String toString() {
-		String string = String.format("Id Compte : %d%nAgence : %d%nClient : %s%nSolde : %d%nDecouvert Autorisé : %s", this.idCompte, this.agence, this.client.getNom(), this.solde, this.decouvertAutorise);
+		String string = String.format("Id Compte : %d%nAgence : %d%nClient : %s%nSolde : %f%nDecouvert Autorisé : %s", this.idCompte, this.agence, this.client.getNom(), this.solde, this.decouvertAutorise);
 		return string;
 	}
 	
@@ -108,7 +108,7 @@ public class Compte {
 			}
 	}
 	
-	public static Compte getCompteFromId(int id) {
+	public static Compte getCompteFromId(long id) {
 		for (Compte compte : listeCompte) {
 			if (id == compte.getIdCompte()) {
 				return compte;
