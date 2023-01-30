@@ -67,7 +67,7 @@ public class Compte {
 		System.out.printf("Entrez l'id de l'agence concernée : ");
 		int agence = sc.nextInt();
 		System.out.printf("%nEntrez l'id du client concerné : ");
-		Client client = Client.getClientFromId(sc.nextInt());
+		Client client = Client.getClientFromId(sc.next());
 		if (client == null) {
 			return;
 		}

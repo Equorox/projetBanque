@@ -7,24 +7,23 @@ public class Client {
 	
 	private static Scanner sc = new Scanner(System.in);
 	
-	private int idClient;
+	private String idClient;
 	private String nom;
 	private String prenom;
 	private LocalDate dateNaissance;
 	private String email;
-	private static ArrayList<Integer> listeIdClients = new ArrayList<>();
+	private static ArrayList<String> listeIdClients = new ArrayList<>();
 	private static ArrayList<Client> listeClients = new ArrayList<>();
 	private ArrayList<Compte> listeComptes = new ArrayList<>();
 	
 	public Client(String nom, String prenom, LocalDate dateNaissance, String email) {
 		//TODO changer la génération pour prendre en compte les règles métier
 		boolean nouveauId = false;
-		Random rand = new Random();
-		int codeGenere = rand.nextInt(900) + 100;
+		String codeGenere = idGenerator();
 		while (!nouveauId) {
 			nouveauId = true;
-			codeGenere = rand.nextInt(900) + 100;
-			for (int code : listeIdClients) {
+			codeGenere = idGenerator();
+			for (String code : listeIdClients) {
 				if (codeGenere == code) {
 					nouveauId = false;
 				}
@@ -39,7 +38,7 @@ public class Client {
 		Client.listeClients.add(this);
 	}
 	
-	public int getIdClient() {
+	public String getIdClient() {
 		return this.idClient;
 	}
 	
@@ -59,7 +58,7 @@ public class Client {
 		return this.email;
 	}
 	
-	public static ArrayList<Integer> getListeId(){
+	public static ArrayList<String> getListeId(){
 		return Client.listeIdClients;
 	}
 	
@@ -89,7 +88,7 @@ public class Client {
 		Client.listeClients.add(client);
 	}
 	
-	public static Client getClientFromId(int id) {
+	public static Client getClientFromId(String id) {
 		for (Client client : listeClients) {
 			if (id == client.getIdClient()) {
 				return client;
@@ -157,7 +156,18 @@ public class Client {
 			System.out.println(client.toString());
 		}
 	}
-
+	
+	public int getRandomNumber(int min, int max) {
+	    return (int) ((Math.random() * (max - min)) + min);
+	}
+	
+	public String idGenerator() {
+		String first = Character.toString(getRandomNumber(65, 90));
+		String second = Character.toString(getRandomNumber(65, 90));
+		int number = getRandomNumber(100000, 999999);
+		String string = String.valueOf(number);
+		return string;
+	}
 
 }
 

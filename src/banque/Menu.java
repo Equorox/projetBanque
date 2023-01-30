@@ -61,7 +61,7 @@ public class Menu {
 					break;
 				case 3:
 					System.out.printf("%nEntrez l'id du client : ");
-					int idClient = sc.nextInt();
+					String idClient = sc.next();
 					System.out.println(Client.getClientFromId(idClient));
 					break;
 				default:
@@ -70,7 +70,7 @@ public class Menu {
 				break;
 			case 6:
 				System.out.printf("%nEntrez l'id du client : ");
-				int idClient = sc.nextInt();
+				String idClient = sc.next();
 				Client.getClientFromId(idClient).afficheListeComptes();
 				break;
 			case 7:
