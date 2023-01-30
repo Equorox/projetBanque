@@ -1,5 +1,9 @@
 package banque;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -125,31 +129,56 @@ public class Client {
 		}
 	}
 
+	public static void printClient() {
+		String user = "";
+		int loop = 0;
+		
+		while (loop == 0) {
+			System.out.printf("\nListe des clients : \n");
+			for (Client uno : listeClients) {
+				System.out.printf("id : %d\n", uno.getIdClient());
+			}
+			System.out.printf("Quel client souahitez vous consulter ?\n\n");
+			user = sc.next();
+			if (listeIdClients.contains(user)) {
+				loop++;
+			}
+		}
+		for(Client uno : listeClients) {
+			if (uno.getIdClient() == user) {	
+				try {
+					Client tmp = uno;
+					 String content = String.format("NUMERO DE CLIENT : %d\n"
+					 		+ "NOM : %s\n"
+					 		+ "PRENOM : %s\n"
+					 		+ "DATE DE NAISSANCE : \n"
+					 		+ "\n"
+					 		+ "------------------------------------------------------------------------------\n"
+					 		+ "LISTE DE COMPTE : \n"
+					 		+ "------------------------------------------------------------------------------\n"
+					 		+ "NUMERO DE COMPTE                          SOLDE\n"
+					 		+ "------------------------------------------------------------------------------\n"
+					 		+ " \n",
+							 tmp.getIdClient(), tmp.getNom(), tmp.getPrenom());
+					 File file = new File("C:\\Users\\59013-42-11\\Desktop\\NouveauFichier.txt"); 
+				        if (file.createNewFile()){
+				          System.out.println("Le fichier est créé.");
+				        }else{
+				          System.out.println("Le fichier existe déjà.");
+				        }
+					 FileWriter fw = new FileWriter(file, false);
+					 BufferedWriter bw = new BufferedWriter(fw);
+					 bw.write(content);
+					 bw.close();
+				 } catch (IOException e) {
+					 e.printStackTrace();
+				 }
+				
+				break;
+			}
+		}
+	}
 
-//	public static void printClient() {
-//		int user = 0;
-//		int loop = 0;
-//		
-//		while (loop == 0) {
-//			System.out.printf("\nListe des clients : \n");
-//			for (Client uno : listeClients) {
-//				System.out.printf("id : %d\n", uno.getIdClient());
-//			}
-//			System.out.printf("Quel client souahitez vous consulter ?\n\n");
-//			user = sc.nextInt();
-//			sc.nextLine();
-//			if (listeIdClients.contains(user)) {
-//				loop++;
-//			}
-//		}
-//		for(Client uno : listeClients) {
-//			if (uno.getIdClient() == user) {
-//				Client tmp = uno;
-//				System.out.printf("Nom : %s, Prenom : %s, Email : %s\n\n", tmp.getNom(), tmp.getPrenom(), tmp.getEmail());
-//				break;
-//			}
-//		}
-//	}
 	
 	public static void afficherClients() {
 		for (Client client : listeClients) {
