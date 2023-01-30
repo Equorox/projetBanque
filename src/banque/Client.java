@@ -165,7 +165,7 @@ public class Client {
 		String first = Character.toString(getRandomNumber(65, 90));
 		String second = Character.toString(getRandomNumber(65, 90));
 		int number = getRandomNumber(100000, 999999);
-		String string = String.valueOf(number);
+		String string = first+second+String.valueOf(number);
 		return string;
 	}
 
