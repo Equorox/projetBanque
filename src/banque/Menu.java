@@ -74,7 +74,7 @@ public class Menu {
 				Client.getClientFromId(idClient).afficheListeComptes();
 				break;
 			case 7:
-				Client.printClient();
+//				Client.printClient();
 				break;
 			case 8:
 				System.out.println("A bientôt !");

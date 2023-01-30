@@ -19,6 +19,8 @@ public class DemoBanque {
 		Agence.afficherAgences();
 		Compte.afficherIdComptes();
 		
+		System.out.println(c1.toString());
+		
 //		Menu.processMenu();
 		
 		

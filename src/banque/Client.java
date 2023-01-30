@@ -71,7 +71,7 @@ public class Client {
 	}
 	
 	public String toString() {
-		String string = String.format("Id : %d%nNom : %s%nPrénom : %s%nDate de naissance : %s%nEmail : %s", this.idClient, this.nom, this.prenom, this.dateNaissance, this.email);
+		String string = String.format("Id : %s%nNom : %s%nPrénom : %s%nDate de naissance : %s%nEmail : %s", this.idClient, this.nom, this.prenom, this.dateNaissance, this.email);
 		return string;
 	}
 	
@@ -126,30 +126,30 @@ public class Client {
 	}
 
 
-	public static void printClient() {
-		int user = 0;
-		int loop = 0;
-		
-		while (loop == 0) {
-			System.out.printf("\nListe des clients : \n");
-			for (Client uno : listeClients) {
-				System.out.printf("id : %d\n", uno.getIdClient());
-			}
-			System.out.printf("Quel client souahitez vous consulter ?\n\n");
-			user = sc.nextInt();
-			sc.nextLine();
-			if (listeIdClients.contains(user)) {
-				loop++;
-			}
-		}
-		for(Client uno : listeClients) {
-			if (uno.getIdClient() == user) {
-				Client tmp = uno;
-				System.out.printf("Nom : %s, Prenom : %s, Email : %s\n\n", tmp.getNom(), tmp.getPrenom(), tmp.getEmail());
-				break;
-			}
-		}
-	}
+//	public static void printClient() {
+//		int user = 0;
+//		int loop = 0;
+//		
+//		while (loop == 0) {
+//			System.out.printf("\nListe des clients : \n");
+//			for (Client uno : listeClients) {
+//				System.out.printf("id : %d\n", uno.getIdClient());
+//			}
+//			System.out.printf("Quel client souahitez vous consulter ?\n\n");
+//			user = sc.nextInt();
+//			sc.nextLine();
+//			if (listeIdClients.contains(user)) {
+//				loop++;
+//			}
+//		}
+//		for(Client uno : listeClients) {
+//			if (uno.getIdClient() == user) {
+//				Client tmp = uno;
+//				System.out.printf("Nom : %s, Prenom : %s, Email : %s\n\n", tmp.getNom(), tmp.getPrenom(), tmp.getEmail());
+//				break;
+//			}
+//		}
+//	}
 	
 	public static void afficherClients() {
 		for (Client client : listeClients) {
