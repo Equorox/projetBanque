@@ -11,6 +11,7 @@ public class Agence {
 	private String adresseAgence;
 	private static ArrayList<Integer> listeCodes = new ArrayList<>();
 	private static ArrayList<Agence> listeAgences = new ArrayList<>();
+	private ArrayList<Client> listeClients = new ArrayList<>();
 
 	public Agence(String nomAgence, String adresseAgence) {
 		boolean nouveauId = false;
@@ -65,5 +66,7 @@ public class Agence {
 		System.out.println("Cette agence n'existe pas");
 		return null;
 	}
+	
+	
 
 }

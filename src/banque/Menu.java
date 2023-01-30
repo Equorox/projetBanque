@@ -51,27 +51,29 @@ public class Menu {
 				case 1:
 					System.out.printf("%nEntrez le nom du client : ");
 					String nom = sc.next();
-					Client.getClientFromName(nom);
+					System.out.println(Client.getClientFromName(nom).toString());
 					break;
 				case 2:
 					System.out.printf("%nEntrez le numéro du compte :");
 					int idCompte = sc.nextInt();
-					Client.getClientFromCompte(null);
+					System.out.println(Client.getClientFromCompte(Compte.getCompteFromId(idCompte)));
 					break;
 				case 3:
 					System.out.printf("%nEntrez l'id du client : ");
-					
+					int idClient = sc.nextInt();
+					System.out.println(Client.getClientFromId(idClient));
 					break;
-
 				default:
 					break;
 				}
 				break;
 			case 6:
-
+				System.out.printf("%nEntrez l'id du client : ");
+				int idClient = sc.nextInt();
+				Client.getClientFromId(idClient).afficheListeComptes();
 				break;
 			case 7:
-
+				
 				break;
 			case 8:
 				System.out.println("A bientôt !");

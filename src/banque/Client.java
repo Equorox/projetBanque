@@ -70,6 +70,11 @@ public class Client {
 		return this.listeComptes;
 	}
 	
+	public String toString() {
+		String string = String.format("Id : %d%nNom : %s%nPrénom : %s%nDate de naissance : %s%nEmail : %s", this.idClient, this.nom, this.prenom, this.dateNaissance, this.email);
+		return string;
+	}
+	
 	public static void instanceClient() {
 		System.out.printf("%nEntrez le nom du client : ");
 		String nom = sc.next();
@@ -111,5 +116,11 @@ public class Client {
 		}
 		System.out.println("Ce client n'existe pas");
 		return null;
+	}
+	
+	public void afficheListeComptes() {
+		for (Compte compte : listeComptes) {
+			System.out.println(compte.toString());
+		}
 	}
 }
