@@ -88,13 +88,12 @@ public class Client {
 		LocalDate dateNaissance = LocalDate.parse(sc.next());
 		System.out.printf("%nEntrez le mail du client : ");
 		String email = sc.next();
-		Client client = new Client(nom, prenom, dateNaissance, email);
-		Client.listeClients.add(client);
+		new Client(nom, prenom, dateNaissance, email);
 	}
 	
 	public static Client getClientFromId(String id) {
 		for (Client client : listeClients) {
-			if (id == client.getIdClient()) {
+			if (id.equals(client.getIdClient())) {
 				return client;
 			}
 		}
@@ -104,7 +103,7 @@ public class Client {
 	
 	public static Client getClientFromName(String nom) {
 		for (Client client : listeClients) {
-			if(nom == client.getNom()) {
+			if(nom.equals(client.getNom())) {
 				return client;
 			}
 		}
@@ -114,7 +113,7 @@ public class Client {
 	
 	public static Client getClientFromCompte(Compte compte) {
 		for (Client client : listeClients) {
-				if (client == compte.getClient()) {
+				if (client.equals(compte.getClient())) {
 					return client;
 			}
 		}
@@ -133,22 +132,25 @@ public class Client {
 		String user = "";
 		int loop = 0;
 		
+		
 		while (loop == 0) {
 			System.out.printf("\nListe des clients : \n");
 			for (Client uno : listeClients) {
-				System.out.printf("id : %d\n", uno.getIdClient());
+				System.out.printf("id : %s\n", uno.getIdClient());
 			}
 			System.out.printf("Quel client souahitez vous consulter ?\n\n");
 			user = sc.next();
+			System.out.println("dmlcjuhdzeo");
 			if (listeIdClients.contains(user)) {
 				loop++;
 			}
 		}
+		System.out.println("ezffjezifhzufhuezhfzefze");
 		for(Client uno : listeClients) {
-			if (uno.getIdClient() == user) {	
+			if (uno.getIdClient().equals(user)) {	
 				try {
 					Client tmp = uno;
-					 String content = String.format("NUMERO DE CLIENT : %d\n"
+					 String content = String.format("NUMERO DE CLIENT : %s\n"
 					 		+ "NOM : %s\n"
 					 		+ "PRENOM : %s\n"
 					 		+ "DATE DE NAISSANCE : \n"
@@ -160,7 +162,7 @@ public class Client {
 					 		+ "------------------------------------------------------------------------------\n"
 					 		+ " \n",
 							 tmp.getIdClient(), tmp.getNom(), tmp.getPrenom());
-					 File file = new File("C:\\Users\\59013-42-11\\Desktop\\NouveauFichier.txt"); 
+					 File file = new File("C:\\Users\\mistr\\Desktop\\NouveauFichier.txt"); 
 				        if (file.createNewFile()){
 				          System.out.println("Le fichier est créé.");
 				        }else{
@@ -197,7 +199,12 @@ public class Client {
 		String string = first+second+String.valueOf(number);
 		return string;
 	}
-
+	
+	public static void afficherIds() {
+		for (String id : listeIdClients) {
+			System.out.println(id);
+		}
+	}
 }
 
 

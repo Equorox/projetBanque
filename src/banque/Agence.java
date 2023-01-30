@@ -58,8 +58,8 @@ public class Agence {
 		String nomAgence = sc.nextLine();
 		System.out.println("Entrez l'adresse de l'agence");
 		String adresseAgence = sc.nextLine();
-		Agence agence = new Agence(nomAgence, adresseAgence);
-		listeAgences.add(agence);
+		new Agence(nomAgence, adresseAgence);
+
 	}
 
 	public static Agence getAgenceFromId(int id) {
