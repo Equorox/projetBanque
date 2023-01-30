@@ -151,6 +151,12 @@ public class Client {
 			}
 		}
 	}
+	
+	public static void afficherClients() {
+		for (Client client : listeClients) {
+			System.out.println(client.toString());
+		}
+	}
 
 
 }

@@ -40,6 +40,7 @@ public class Menu {
 				Compte.instanceCompte();
 				break;
 			case 4:
+				Compte.afficherIdComptes();
 				System.out.printf("%nEntrez l'id du compte : ");
 				int id = sc.nextInt();
 				System.out.println(Compte.getCompteFromId(id).toString());
@@ -73,11 +74,7 @@ public class Menu {
 				Client.getClientFromId(idClient).afficheListeComptes();
 				break;
 			case 7:
-
-				
-
 				Client.printClient();
-
 				break;
 			case 8:
 				System.out.println("A bientôt !");

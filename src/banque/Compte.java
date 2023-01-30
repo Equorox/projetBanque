@@ -61,6 +61,7 @@ public class Compte {
 	}
 	
 	public static void instanceCompte() {
+		Agence.afficherAgences();
 		System.out.printf("Entrez l'id de l'agence concernée : ");
 		int agence = sc.nextInt();
 		System.out.printf("%nEntrez l'id du client concerné : ");
@@ -111,6 +112,12 @@ public class Compte {
 		}
 		System.out.println("Ce compte n'existe pas");
 		return null;
+	}
+	
+	public static void afficherIdComptes() {
+		for (long id : listeIdComptes) {
+			System.out.println(id);
+		}
 	}
 	
 

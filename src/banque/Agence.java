@@ -3,15 +3,14 @@ package banque;
 import java.util.*;
 
 public class Agence {
-	
+
 	private static Scanner sc = new Scanner(System.in);
-	
+
 	private int codeAgence;
 	private String nomAgence;
 	private String adresseAgence;
 	private static ArrayList<Integer> listeCodes = new ArrayList<>();
 	private static ArrayList<Agence> listeAgences = new ArrayList<>();
-	private ArrayList<Client> listeClients = new ArrayList<>();
 
 	public Agence(String nomAgence, String adresseAgence) {
 		boolean nouveauId = false;
@@ -35,19 +34,24 @@ public class Agence {
 	public int getCodeAgence() {
 		return this.codeAgence;
 	}
-	
+
 	public String getNomAgence() {
 		return this.nomAgence;
 	}
-	
+
 	public String getAdresseAgence() {
 		return this.adresseAgence;
 	}
-	
-	public static ArrayList<Agence> getListeAgences(){
+
+	public static ArrayList<Agence> getListeAgences() {
 		return Agence.listeAgences;
 	}
-	
+
+	public String toString() {
+		String string = String.format("Id : %d%nNom : %s%nAdresse : %s", this.codeAgence, this.nomAgence, this.adresseAgence);
+		return string;
+	}
+
 	public static void instanceAgence() {
 		System.out.println("Entrez le nom de l'agence");
 		String nomAgence = sc.nextLine();
@@ -56,7 +60,7 @@ public class Agence {
 		Agence agence = new Agence(nomAgence, adresseAgence);
 		listeAgences.add(agence);
 	}
-	
+
 	public static Agence getAgenceFromId(int id) {
 		for (Agence agence : listeAgences) {
 			if (id == agence.getCodeAgence()) {
@@ -67,6 +71,10 @@ public class Agence {
 		return null;
 	}
 	
-	
+	public static void afficherAgences() {
+		for (Agence agence : listeAgences) {
+			System.out.println(agence.toString());
+		}
+	}
 
 }
