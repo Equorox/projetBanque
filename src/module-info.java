@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author mistr
+ *
+ */
+module banque {
+}
