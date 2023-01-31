@@ -1,8 +1,11 @@
 package banque;
 
+import java.io.*;
 import java.util.*;
 
-public class Agence {
+public class Agence implements Serializable{
+
+	private static final long serialVersionUID = -2438547408077953067L;
 
 	private static Scanner sc = new Scanner(System.in);
 
@@ -13,6 +16,30 @@ public class Agence {
 	private static ArrayList<Agence> listeAgences = new ArrayList<>();
 
 	public Agence(String nomAgence, String adresseAgence) {
+		this.codeAgence = idGenerator();
+		Agence.listeCodes.add(codeAgence);
+		this.nomAgence = nomAgence;
+		this.adresseAgence = adresseAgence;
+		Agence.listeAgences.add(this);
+		serializationAgence();
+	}
+	
+	public void serializationAgence() {
+		FileOutputStream fout;
+		try {
+			fout = new FileOutputStream("C:\\Users\\mistr\\Documents\\Programmation\\fagence.txt");
+			ObjectOutputStream out = new ObjectOutputStream(fout);
+			out.writeObject(listeAgences);
+			out.flush();
+			out.close();
+			System.out.println("Agence saved");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	
+	public int idGenerator() {
 		boolean nouveauId = false;
 		Random rand = new Random();
 		int codeGenere = rand.nextInt(900) + 100;
@@ -25,13 +52,9 @@ public class Agence {
 				}
 			}
 		}
-		this.codeAgence = codeGenere;
-		Agence.listeCodes.add(codeAgence);
-		this.nomAgence = nomAgence;
-		this.adresseAgence = adresseAgence;
-		Agence.listeAgences.add(this);
+		return codeGenere;
 	}
-
+	
 	public int getCodeAgence() {
 		return this.codeAgence;
 	}

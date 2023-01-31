@@ -1,9 +1,12 @@
 package banque;
 
 import java.util.*;
+import java.io.*;
 
-public class Compte {
+public class Compte implements Serializable{
 	
+	private static final long serialVersionUID = 5086561284302671817L;
+
 	private static Scanner sc = new Scanner(System.in);
 	
 	protected long idCompte;
@@ -16,6 +19,32 @@ public class Compte {
 	
 	
 	public Compte(int agence, Client client, double solde, boolean decouvertAutorise) {
+		this.idCompte = idGenerator();
+		this.agence = agence;
+		this.client = client;
+		this.solde = solde;
+		this.decouvertAutorise = decouvertAutorise;
+		Compte.listeIdComptes.add(idCompte);
+		Compte.listeCompte.add(this);
+		serializationCompte();
+	}
+	
+	
+	public void serializationCompte() {
+		FileOutputStream fout;
+		try {
+			fout = new FileOutputStream("C:\\Users\\mistr\\Documents\\Programmation\\fcompte.txt");
+			ObjectOutputStream out = new ObjectOutputStream(fout);
+			out.writeObject(listeCompte);
+			out.flush();
+			out.close();
+			System.out.println("Compte saved");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	public long idGenerator() {
 		boolean nouveauId = false;
 		Random r = new Random();
 		long number = 10000000000L + (long)(r.nextDouble() * 999999999L);
@@ -28,14 +57,9 @@ public class Compte {
 				}
 			}
 		}
-		this.idCompte = number;
-		this.agence = agence;
-		this.client = client;
-		this.solde = solde;
-		this.decouvertAutorise = decouvertAutorise;
-		Compte.listeIdComptes.add(idCompte);
-		Compte.listeCompte.add(this);
+		return number;
 	}
+	
 	
 	public long getIdCompte() {
 		return this.idCompte;
@@ -57,6 +81,10 @@ public class Compte {
 		return this.decouvertAutorise;
 	}
 	
+	public static ArrayList<Compte> getListeCompte() {
+		return Compte.listeCompte;
+	}
+	
 	public String toString() {
 		String string = String.format("Id Compte : %d%nAgence : %d%nClient : %s%nSolde : %f%nDecouvert Autorisé : %s", this.idCompte, this.agence, this.client.getNom(), this.solde, this.decouvertAutorise);
 		return string;
@@ -66,6 +94,7 @@ public class Compte {
 		Agence.afficherAgences();
 		System.out.printf("Entrez l'id de l'agence concernée : ");
 		int agence = sc.nextInt();
+		Client.afficherClients();
 		System.out.printf("%nEntrez l'id du client concerné : ");
 		Client client = Client.getClientFromId(sc.next());
 		if (client == null) {
